@@ -1,0 +1,36 @@
+[build]
+  # Directory to publish (default: current directory)
+  publish = "."
+  
+  # Build command (not needed for static sites, but can be used later)
+  command = "echo 'No build process needed for static site'"
+
+[build.environment]
+  # Node.js version (if needed later)
+  NODE_VERSION = "18"
+
+# Headers for better security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# Redirects (example for Single Page Applications)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"], Country = ["US"]}
+  force = false
+
+# Forms handling (if you have contact forms)
+# This enables Netlify's form handling
