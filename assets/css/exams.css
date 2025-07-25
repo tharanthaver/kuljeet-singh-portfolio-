@@ -1,0 +1,186 @@
+/* Exams Section Styles - Dark Theme */
+.exams {
+    background: linear-gradient(135deg, #1e1e2e 0%, #252547 100%);
+    padding: 1rem 0.5rem;
+    border-radius: 10px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(100, 200, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(100, 200, 255, 0.2);
+}
+
+.exams::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.exams__title {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #64c8ff, #a855f7, #f97316);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.exams__subtitle {
+    font-size: 1rem;
+    color: #b4b4c7;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    line-height: 1.6;
+}
+
+.exams__container {
+    position: relative;
+    z-index: 1;
+}
+
+.exams__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 200, 255, 0.2);
+}
+
+.exams__header-row {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.exams__header-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.exams__header-cell, .exams__cell {
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.exams__header-cell {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.exams__row {
+    border-bottom: 1px solid rgba(100, 200, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.exams__row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 200, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.exams__row:hover::before {
+    left: 100%;
+}
+
+.exams__row:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.exams__row:hover {
+    background: rgba(100, 200, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.exams__cell {
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    color: #e2e8f0;
+}
+
+.exams__row:hover .exams__cell {
+    color: #ffffff;
+}
+
+/* Additional styling for better visual hierarchy */
+.exams__cell:first-child {
+    font-weight: 500;
+    color: #64c8ff;
+}
+
+.exams__cell:last-child {
+    color: #a855f7;
+    font-weight: 500;
+}
+
+.exams__row:hover .exams__cell:first-child {
+    color: #ffffff;
+}
+
+.exams__row:hover .exams__cell:last-child {
+    color: #ffffff;
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+    .exams {
+        padding: 1rem 0.5rem;
+        border-radius: 10px;
+    }
+    
+    .exams__title {
+        font-size: 1.8rem;
+    }
+    
+    .exams__subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .exams__header-cell, .exams__cell {
+        padding: 0.7rem 0.4rem;
+        font-size: 0.8rem;
+    }
+}

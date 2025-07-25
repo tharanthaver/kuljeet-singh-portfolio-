@@ -1,0 +1,336 @@
+/* Enhanced Header Styling - Matching Website Aesthetics */
+
+/* Header container */
+.l-header {
+    background: #2b364c; /* Full opacity background */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212, 167, 106, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    transition: all 0.3s ease;
+}
+
+/* Header scroll state */
+.header-scroll {
+    padding: 0.7rem 0;
+    background: #2b364c; /* Full opacity background */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(212, 167, 106, 0.3);
+}
+
+/* Subtle gradient line under header */
+.l-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4a76a, transparent);
+    opacity: 0.4;
+}
+
+/* Navigation container */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Logo styling */
+.nav__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.nav__logo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4a76a;
+    transition: width 0.3s ease;
+}
+
+.nav__logo:hover::after {
+    width: 100%;
+}
+
+/* Navigation menu */
+.nav__menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Navigation list */
+.nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+/* Navigation items */
+.nav__item {
+    margin-bottom: 0;
+    position: relative;
+}
+
+/* Navigation links */
+.nav__link {
+    color: #fff;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    margin: 0 0.6rem;
+    white-space: nowrap;
+    background: transparent;
+}
+
+.nav__link:hover {
+    color: #d4a76a;
+}
+
+/* Active link styling */
+.nav__link.active-link {
+    color: #d4a76a;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(212, 167, 106, 0.4);
+}
+
+.nav__link.active-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d4a76a;
+    box-shadow: 0 0 8px rgba(212, 167, 106, 0.6);
+}
+
+.nav__link.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #d4a76a;
+    transition: width 0.3s ease;
+    animation: pulse 1.5s infinite alternate;
+}
+
+/* Underline effect for links */
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4a76a;
+    transition: width 0.3s ease;
+}
+
+.nav__link:hover::after {
+    width: 100%;
+}
+
+/* Website visitors link */
+.nav__link.website-visitors {
+    color: #fff;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    margin: 0 0.6rem;
+    white-space: nowrap;
+    background: transparent;
+}
+
+.nav__link.website-visitors:hover {
+    color: #d4a76a;
+}
+
+/* Download CV button */
+.nav__download-btn {
+    background: rgba(212, 167, 106, 0.2);
+    color: #d4a76a;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+    border: 1px solid rgba(212, 167, 106, 0.3);
+    white-space: nowrap;
+}
+
+.nav__download-btn:hover {
+    background: rgba(212, 167, 106, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile menu toggle button */
+.nav__toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #d4a76a;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu styling */
+@media screen and (max-width: 992px) {
+    .nav {
+        padding: 0 1.5rem;
+    }
+    
+    .nav__toggle {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(212, 167, 106, 0.1);
+        border: 1px solid rgba(212, 167, 106, 0.1);
+    }
+    
+    .nav__menu {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        background: rgba(25, 25, 25, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        width: 100%;
+        height: auto;
+        padding: 2rem 1.5rem;
+        transition: 0.5s;
+        border-bottom: 1px solid rgba(212, 167, 106, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 100;
+    }
+    
+    .nav__list {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 1.2rem;
+        width: 100%;
+    }
+    
+    .nav__item {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav__link {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 0;
+    }
+    
+    .nav__download-btn {
+        margin: 1rem auto 0;
+        justify-content: center;
+        width: fit-content;
+    }
+    
+    .show {
+        top: 4rem;
+    }
+}
+
+/* Adjust spacing for different screen sizes */
+@media screen and (max-width: 768px) {
+    .nav__logo {
+        font-size: 1.3rem;
+    }
+    
+    .nav__link {
+        font-size: 0.8rem;
+    }
+}
+
+/* Make the header responsive for screens smaller than 768px */
+@media (max-width: 768px) {
+    .l-header {
+        padding: 0.5rem 0;
+    }
+    .nav__menu {
+        display: none;
+    }
+    .nav__toggle {
+        display: block;
+    }
+}
+
+/* Ensure proper spacing between header and main content */
+.l-main {
+    padding-top: 5rem;
+}
+
+/* Add smooth scrolling for better navigation experience */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+        box-shadow: 0 0 5px rgba(212, 167, 106, 0.3);
+    }
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 12px rgba(212, 167, 106, 0.5);
+    }
+    100% {
+        opacity: 0.4;
+        box-shadow: 0 0 5px rgba(212, 167, 106, 0.3);
+    }
+}

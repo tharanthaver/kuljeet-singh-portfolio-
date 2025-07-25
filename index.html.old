@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/custom.css">
+        <link rel="stylesheet" href="assets/css/newspaper-style.css">
+        <title>Prof. Kuljeet Singh - Portfolio</title>
+        
+        <style>
+            /* Research Publications Styles */
+            .research-publications {
+                padding: 2rem 0;
+            }
+
+            .research-publications__stats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .research-publications__stat-card {
+                background: rgba(30, 30, 35, 0.6);
+                padding: 1.5rem;
+                border-radius: 12px;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .research-publications__stat-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .research-publications__stat-number {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 0.5rem;
+            }
+
+            .research-publications__stat-label {
+                color: #bbb;
+                font-size: 0.9rem;
+            }
+
+            .research-publications__filters {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .research-publications__filter {
+                padding: 0.6rem 1.2rem;
+                border: none;
+                border-radius: 30px;
+                background: rgba(40, 40, 45, 0.7);
+                color: #ddd;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .research-publications__filter.active {
+                background: linear-gradient(135deg, #4776E6, #8E54E9);
+                color: #fff;
+            }
+
+            .research-publications__grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin: 2rem 0;
+            }
+
+            .research-publications__card {
+                background: rgba(30, 30, 35, 0.6);
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .research-publications__card:hover {
+                transform: translateY(-5px);
+            }
+
+            .research-publications__card-header {
+                margin-bottom: 1rem;
+            }
+
+            .research-publications__card-title {
+                font-size: 1.1rem;
+                color: #fff;
+                margin-bottom: 1rem;
+                line-height: 1.4;
+            }
+
+            .research-publications__card-badges {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .research-publications__badge {
+                padding: 0.3rem 0.8rem;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 500;
+            }
+
+            .research-publications__badge.type {
+                background: rgba(71, 118, 230, 0.2);
+                color: #4776E6;
+            }
+
+            .research-publications__badge.impact {
+                background: rgba(142, 84, 233, 0.2);
+                color: #8E54E9;
+            }
+
+            .research-publications__badge.quartile {
+                background: rgba(255, 107, 107, 0.2);
+                color: #ff6b6b;
+            }
+
+            .research-publications__card-body {
+                color: #bbb;
+                font-size: 0.9rem;
+            }
+
+            .research-publications__authors {
+                color: #fff;
+                margin-bottom: 0.5rem;
+            }
+
+            .research-publications__journal {
+                margin-bottom: 0.5rem;
+            }
+
+            .research-publications__year {
+                margin-bottom: 0.5rem;
+            }
+
+            .research-publications__status {
+                font-style: italic;
+            }
+
+            .research-publications__load-more {
+                display: block;
+                margin: 2rem auto;
+                padding: 0.8rem 2rem;
+                border: none;
+                border-radius: 30px;
+                background: linear-gradient(135deg, #4776E6, #8E54E9);
+                color: #fff;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .research-publications__load-more:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(71, 118, 230, 0.4);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- MOUSE TRAIL -->
+        <div id="mouse-trail-container"></div>
+        
+        <!-- OVERLAY -->
+        <div class="overlay first"></div>
+        <div class="overlay second"></div>
+        <div class="overlay third"></div>
+
+        <!-- HEADER -->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">Portfolio</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#" class="nav__link active">HOME</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">ABOUT</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">SKILLS</a></li>
+                        <li class="nav__item"><a href="#education" class="nav__link">EDUCATION</a></li>
+                        <li class="nav__item"><a href="#exams" class="nav__link">EXAMINATIONS</a></li>
+                        <li class="nav__item"><a href="#employment" class="nav__link">EMPLOYMENT</a></li>
+                        <li class="nav__item"><a href="#research" class="nav__link">RESEARCH</a></li>
+                        <li class="nav__item"><a href="#publications" class="nav__link">PUBLICATIONS</a></li>
+                        <li class="nav__item"><a href="#awards" class="nav__link">AWARDS</a></li>
+                        <li class="nav__item"><a href="#activities" class="nav__link">ACTIVITIES</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">CONTACT</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <ion-icon name="menu"></ion-icon>
+                </div>
+            </nav>
+        </header>
+
+        <!-- MAIN -->
+        <main class="l-main bd-grid">
+            <!-- HOME -->
+            <div class="home">
+                <div class="home__img">
+                    <img src="assets/img/pfp.png" alt="Prof. Kuljeet Singh">
+                </div>
+                
+                <div class="home__information">
+                    <span class="home__pressent">Hello</span>
+                    <h1 class="home__title">Kuljeet Singh</h1>
+                    <span class="home__skill">Assistant Professor</span>
+                    
+                    <div class="home__social">
+                        <a href="#" class="home__social-icon">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                        <a href="#" class="home__social-icon">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </a>
+                        <a href="#" class="home__social-icon">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <a href="#" class="home__button">DOWNLOAD CV</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT -->
+            <section class="about section" id="about">
+                <h2 class="section-title">About Me</h2>
+                
+                <div class="about__container bd-grid" style="display: block; text-align: justify; padding: 2.5rem; background: rgba(25, 25, 25, 0.6); border-radius: 10px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px);">
+                    <div class="about__img-box" style="float: left; width: 42%; margin: 0 2.5rem 2rem 0; shape-outside: polygon(0 0, 100% 0, 100% 75%, 85% 90%, 0 100%); display: block; position: relative; z-index: 2;">
+                        <div class="about__img" style="border-radius: 10px; width: 100%; overflow: hidden; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.15); padding: 6px; background: rgba(40, 40, 40, 0.4);">
+                            <img src="assets/img/pfp.png" alt="Prof. Kuljeet Singh" style="width: 100%; height: auto; object-fit: cover; display: block; border-radius: 6px; filter: brightness(1.02); transition: all 0.4s ease;">
+                        </div>
+                    </div>
+                    
+                    <div style="position: relative; z-index: 1;">
+                        <div class="about__role-badge" style="display: inline-flex; align-self: flex-start; align-items: center; background: linear-gradient(to right, var(--first-color), rgba(255, 107, 107, 0.7)); padding: 0.4rem 1rem; border-radius: 30px; margin-bottom: 1.2rem; gap: 0.5rem; box-shadow: 0 4px 10px rgba(255, 107, 107, 0.2); font-size: 0.95rem; position: relative; left: -6px;">
+                            <span>Assistant Professor</span>
+                            <ion-icon name="school-outline"></ion-icon>
+                        </div>
+                        
+                        <div class="about__text" style="position: relative; width: 100%; line-height: 1.9; letter-spacing: 0.02em; margin-top: 0; color: #eee; text-align: justify; font-size: 1.02rem;">
+                            <p style="display: inline; text-indent: 0; margin-top: 0;">Prof. Kuljeet Singh is working as an Assistant Professor at the Department of Computer Science, School of Sciences, CHRIST (Deemed to be University), Delhi-NCR, 201003, India. He is also a doctoral research scholar at the Department of Computer Science & Information Technology, Central University of Jammu, Jammu and Kashmir, India.</p>
+                            <span style="display: inline-block; width: 100%; height: 12px;"></span>
+                            
+                            <p style="display: inline; text-indent: 1.5rem;">He received a Master's in Computer Application from the University of Jammu, Jammu and Kashmir, India in 2018. He worked as a lecturer and in-charge head of the department at the Department of Computer Science and IT, Kishtwar campus, University of Jammu, for over two years.</p>
+                            <span style="display: inline-block; width: 100%; height: 12px;"></span>
+                            
+                            <p style="display: inline; text-indent: 1.5rem;">He qualified for the National Eligibility Test (NET) four times consecutively in 2019–21, and the Himachal Pradesh State Eligibility Test (HP-SET) in 2019. In past years, he has published/communicated over 35 SCI and Scopus journal research papers, 10 Scopus-indexed conference papers, 3 Book Chapters, 8 Patents, and 1 authored book.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about__social-box" style="clear: both; margin-top: 2rem; display: flex; justify-content: flex-start; gap: 1.5rem;">
+                        <a href="#" class="about__social-link" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #0077b5, #00669e); box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3); transition: all 0.3s ease; transform: translateY(0); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <ion-icon name="logo-linkedin" style="color: white; font-size: 1.3rem; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));"></ion-icon>
+                        </a>
+                        <a href="#" class="about__social-link" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #1da1f2, #0d8ecf); box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3); transition: all 0.3s ease; transform: translateY(0); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <ion-icon name="logo-twitter" style="color: white; font-size: 1.3rem; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));"></ion-icon>
+                        </a>
+                        <a href="#" class="about__social-link" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #ea4335, #d62516); box-shadow: 0 5px 15px rgba(234, 67, 53, 0.3); transition: all 0.3s ease; transform: translateY(0); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <ion-icon name="mail-outline" style="color: white; font-size: 1.3rem; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));"></ion-icon>
+                        </a>
+                        <a href="#" class="about__social-link" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #333, #171515); box-shadow: 0 5px 15px rgba(51, 51, 51, 0.3); transition: all 0.3s ease; transform: translateY(0); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <ion-icon name="logo-github" style="color: white; font-size: 1.3rem; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));"></ion-icon>
+                        </a>
+                    </div>
+                    
+                    <div class="about__stats" style="margin-top: 2.5rem; margin-bottom: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 2rem; display: flex; justify-content: space-around;">
+                        <div class="about__stat-item" style="background: rgba(30, 30, 35, 0.6); padding: 1.5rem; border-radius: 12px; text-align: center; width: 30%; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(83, 109, 254, 0.4); transition: all 0.3s ease; border: 1px solid rgba(100, 100, 255, 0.1);">
+                            <div class="about__stat-number" style="font-size: 3rem; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(83, 109, 254, 0.8);">35+</div>
+                            <div class="about__stat-label" style="font-size: 1rem; color: #bbb; margin-top: 0.5rem; font-weight: 500;">Research Papers</div>
+                            <div class="about__stat-glow" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, rgba(83, 109, 254, 0.8), transparent);"></div>
+                        </div>
+                        <div class="about__stat-item" style="background: rgba(30, 30, 35, 0.6); padding: 1.5rem; border-radius: 12px; text-align: center; width: 30%; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 179, 158, 0.4); transition: all 0.3s ease; border: 1px solid rgba(0, 179, 158, 0.1);">
+                            <div class="about__stat-number" style="font-size: 3rem; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(0, 179, 158, 0.8);">8</div>
+                            <div class="about__stat-label" style="font-size: 1rem; color: #bbb; margin-top: 0.5rem; font-weight: 500;">Patents</div>
+                            <div class="about__stat-glow" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, rgba(0, 179, 158, 0.8), transparent);"></div>
+                        </div>
+                        <div class="about__stat-item" style="background: rgba(30, 30, 35, 0.6); padding: 1.5rem; border-radius: 12px; text-align: center; width: 30%; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 183, 77, 0.4); transition: all 0.3s ease; border: 1px solid rgba(255, 183, 77, 0.1);">
+                            <div class="about__stat-number" style="font-size: 3rem; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(255, 183, 77, 0.8);">3</div>
+                            <div class="about__stat-label" style="font-size: 1rem; color: #bbb; margin-top: 0.5rem; font-weight: 500;">Book Chapters</div>
+                            <div class="about__stat-glow" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, rgba(255, 183, 77, 0.8), transparent);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="about__tabs" style="margin-top: 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem;">
+                        <button class="about__tab active" data-target="bio" style="background: rgba(40, 40, 45, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.6rem 1.2rem; border-radius: 30px; color: #fff; font-weight: 500; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; margin-right: 0.8rem;">Biography</button>
+                        <button class="about__tab" data-target="interests" style="background: rgba(40, 40, 45, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.6rem 1.2rem; border-radius: 30px; color: #ddd; font-weight: 500; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; margin-right: 0.8rem;">Interests</button>
+                        <button class="about__tab" data-target="expertise" style="background: rgba(40, 40, 45, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.6rem 1.2rem; border-radius: 30px; color: #ddd; font-weight: 500; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;">Expertise</button>
+                    </div>
+                    
+                    <div class="about__tab-content active" id="bio" style="margin-top: 1.5rem;">
+                        <p class="about__text" style="color: #ddd; line-height: 1.8;">
+                            Prof. Singh's research focuses on applying artificial intelligence to solve complex problems in healthcare and beyond. With a strong background in computer science and a passion for innovation, he has developed novel approaches that bridge the gap between theoretical research and practical applications.
+                        </p>
+                    </div>
+                    
+                    <div class="about__tab-content" id="interests">
+                        <p class="about__text" style="color: #ddd; line-height: 1.8;">
+                            Prof. Singh's research interests span across emerging areas of computational intelligence and healthcare applications. He is particularly passionate about:
+                        </p>
+                        <ul class="about__interest-list">
+                            <li><ion-icon name="analytics-outline"></ion-icon> Artificial Intelligence</li>
+                            <li><ion-icon name="pulse-outline"></ion-icon> Healthcare Applications</li>
+                            <li><ion-icon name="brain-outline"></ion-icon> Cognitive Neuroscience</li>
+                            <li><ion-icon name="image-outline"></ion-icon> Image Processing</li>
+                            <li><ion-icon name="school-outline"></ion-icon> Meta-Learning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about__tab-content" id="expertise">
+                        <p class="about__text" style="color: #ddd; line-height: 1.8;">
+                            With a background spanning academia and research, Prof. Singh has developed expertise in:
+                        </p>
+                        <div class="about__expertise-grid">
+                            <div class="about__expertise-item">
+                                <div class="about__expertise-icon">
+                                    <ion-icon name="code-slash-outline"></ion-icon>
+                                </div>
+                                <h4>Programming</h4>
+                                <p>Python, Java, R</p>
+                            </div>
+                            <div class="about__expertise-item">
+                                <div class="about__expertise-icon">
+                                    <ion-icon name="layers-outline"></ion-icon>
+                                </div>
+                                <h4>Frameworks</h4>
+                                <p>TensorFlow, PyTorch</p>
+                            </div>
+                            <div class="about__expertise-item">
+                                <div class="about__expertise-icon">
+                                    <ion-icon name="newspaper-outline"></ion-icon>
+                                </div>
+                                <h4>Publishing</h4>
+                                <p>35+ Research Papers</p>
+                            </div>
+                            <div class="about__expertise-item">
+                                <div class="about__expertise-icon">
+                                    <ion-icon name="people-outline"></ion-icon>
+                                </div>
+                                <h4>Teaching</h4>
+                                <p>5+ Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="about__cta-button" style="display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 1.5rem; background: linear-gradient(135deg, #4776E6, green); padding: 0.9rem 1.8rem; border-radius: 50px; color: #fff; font-weight: 600; box-shadow: 0 10px 20px rgba(79, 118, 230, 0.4), 0 0 15px rgba(142, 84, 233, 0.3); border: 1px solid rgba(255, 255, 255, 0.15); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <span style="position: relative; z-index: 2; letter-spacing: 0.5px; text-shadow: 0 1px 2px greenyellow;">Download CV</span>
+                        <div style="position: relative; z-index: 2; background: rgba(255, 255, 255, 0.2); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <img src="assets/img/download.png" style="width: 18px; height: 18px; filter: brightness(1.2);">
+                        </div>
+                        <div style="position: absolute; top: -10px; right: -10px; width: 20px; height: 20px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; filter: blur(10px);"></div>
+                        <div style="position: absolute; bottom: -10px; left: -10px; width: 20px; height: 20px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; filter: blur(10px);"></div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- SKILLS -->
+            <section class="skills section" id="skills">
+                <h2 class="section-title">Technical Skills</h2>
+                
+                <div class="skills__intro">
+                    <p>As an academic professional, I've developed expertise in a wide range of technical fields and computer science disciplines.</p>
+                </div>
+                
+                <div class="skills__container bd-grid">
+                    <div class="skills__card">
+                        <div class="skills__card-content">
+                            <div class="skills__icon">
+                                <ion-icon name="logo-apple"></ion-icon>
+                            </div>
+                            <h3 class="skills__card-title">Operating System</h3>
+                        </div>
+                        <div class="skills__progress">
+                            <div class="skills__progress-bar"></div>
+                        </div>
+                        <div class="skills__percentage">100%</div>
+                    </div>
+                    
+                    <div class="skills__card">
+                        <div class="skills__card-content">
+                            <div class="skills__icon">
+                                <ion-icon name="code-working"></ion-icon>
+                            </div>
+                            <h3 class="skills__card-title">Data Structures</h3>
+                        </div>
+                        <div class="skills__progress">
+                            <div class="skills__progress-bar"></div>
+                        </div>
+                        <div class="skills__percentage">100%</div>
+                    </div>
+                    
+                    <div class="skills__card">
+                        <div class="skills__card-content">
+                            <div class="skills__icon">
+                                <ion-icon name="construct"></ion-icon>
+                            </div>
+                            <h3 class="skills__card-title">Software Engineering</h3>
+                        </div>
+                        <div class="skills__progress">
+                            <div class="skills__progress-bar"></div>
+                        </div>
+                        <div class="skills__percentage">100%</div>
+                    </div>
+                    
+                    <div class="skills__card">
+                        <div class="skills__card-content">
+                            <div class="skills__icon">
+                                <ion-icon name="wifi"></ion-icon>
+                            </div>
+                            <h3 class="skills__card-title">Internet of Things</h3>
+                        </div>
+                        <div class="skills__progress">
+                            <div class="skills__progress-bar"></div>
+                        </div>
+                        <div class="skills__percentage">100%</div>
+                    </div>
+                    
+                    <div class="skills__card">
+                        <div class="skills__card-content">
+                            <div class="skills__icon">
+                                <ion-icon name="analytics"></ion-icon>
+                            </div>
+                            <h3 class="skills__card-title">Data Science</h3>
+                        </div>
+                        <div class="skills__progress">
+                            <div class="skills__progress-bar"></div>
+                        </div>
+                        <div class="skills__percentage">100%</div>
+                    </div>
+                    
+                    <div class="skills__card">
+                        <div class="skills__card-content">
+                            <div class="skills__icon">
+                                <ion-icon name="brain"></ion-icon>
+                            </div>
+                            <h3 class="skills__card-title">Artificial Intelligence</h3>
+                        </div>
+                        <div class="skills__progress">
+                            <div class="skills__progress-bar"></div>
+                        </div>
+                        <div class="skills__percentage">100%</div>
+                    </div>
+                    
+                    <div class="skills__card">
+                        <div class="skills__card-content">
+                            <div class="skills__icon">
+                                <ion-icon name="server"></ion-icon>
+                            </div>
+                            <h3 class="skills__card-title">Database Management System</h3>
+                        </div>
+                        <div class="skills__progress">
+                            <div class="skills__progress-bar"></div>
+                        </div>
+                        <div class="skills__percentage">100%</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDUCATION -->
+            <section class="education section" id="education">
+                <h2 class="section-title">Educational Journey</h2>
+                
+                <div class="education__intro">
+                    <p>A dedicated academic journey focused on advancing knowledge in Computer Science and Information Technology.</p>
+                </div>
+                
+                <div class="education__container" style="position: relative; margin-top: 3rem; padding: 3rem; overflow: hidden; background: rgba(30, 28, 26, 0.7); border-radius: 15px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);">
+                    <!-- Map background elements -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMzAyYiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzIyMjAxYyIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2EpIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMC41IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjEyLDE2Nyw5OCwwLjEpIiBzdHJva2Utd2lkdGg9IjAuNSIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNzAiIHI9IjAuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDIxMiwxNjcsOTgsMC4xKSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjgwIiByPSIwLjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyMTIsMTY3LDk4LDAuMSkiIHN0cm9rZS13aWR0aD0iMC41Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSIyMCIgcj0iMC41IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjEyLDE2Nyw5OCwwLjEpIiBzdHJva2Utd2lkdGg9IjAuNSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNDAiIHI9IjAuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDIxMiwxNjcsOTgsMC4xKSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3N2Zz4=') repeat; opacity: 0.2; z-index: 1;"></div>
+                    
+                    <!-- Stats at the top -->
+                    <div class="education__stats" style="display: flex; justify-content: space-between; gap: 1.5rem; margin-bottom: 3rem; position: relative; z-index: 2;">
+                        <div class="education__stat-box" style="flex: 1; background: rgba(40, 35, 30, 0.8); border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); animation: glow 2s infinite alternate;"></div>
+                            <ion-icon name="school" style="font-size: 2rem; color: #d4a76a; margin-bottom: 0.5rem;"></ion-icon>
+                            <span class="education__stat-number" style="font-size: 2.8rem; font-weight: 700; color: #fff; display: block; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);">6</span>
+                            <span class="education__stat-label" style="color: #d4a76a; font-size: 1rem; margin-top: 0.3rem; display: block;">Qualifications</span>
+                        </div>
+                        
+                        <div class="education__stat-box" style="flex: 1; background: rgba(40, 35, 30, 0.8); border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); animation: glow 2s infinite alternate; animation-delay: 0.7s;"></div>
+                            <ion-icon name="hourglass" style="font-size: 2rem; color: #d4a76a; margin-bottom: 0.5rem;"></ion-icon>
+                            <span class="education__stat-number" style="font-size: 2.8rem; font-weight: 700; color: #fff; display: block; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);">15+</span>
+                            <span class="education__stat-label" style="color: #d4a76a; font-size: 1rem; margin-top: 0.3rem; display: block;">Years of Education</span>
+                        </div>
+                        
+                        <div class="education__stat-box" style="flex: 1; background: rgba(40, 35, 30, 0.8); border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); animation: glow 2s infinite alternate; animation-delay: 1.4s;"></div>
+                            <ion-icon name="business" style="font-size: 2rem; color: #d4a76a; margin-bottom: 0.5rem;"></ion-icon>
+                            <span class="education__stat-number" style="font-size: 2.8rem; font-weight: 700; color: #fff; display: block; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);">4</span>
+                            <span class="education__stat-label" style="color: #d4a76a; font-size: 1rem; margin-top: 0.3rem; display: block;">Institutions</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Journey Title -->
+                    <div style="text-align: center; margin-bottom: 3rem; position: relative; z-index: 2;">
+                        <h3 style="color: #d4a76a; font-size: 1.4rem; margin-bottom: 0.8rem; text-shadow: 0 0 10px rgba(212,167,106,0.3);">Academic Road Map</h3>
+                        <div style="display: flex; align-items: center; justify-content: center; margin: 0 auto; max-width: 300px;">
+                            <div style="flex-grow: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(212,167,106,0.3), transparent);"></div>
+                            <div style="margin: 0 1rem;">
+                                <ion-icon name="compass" style="font-size: 1.5rem; color: #d4a76a;"></ion-icon>
+                            </div>
+                            <div style="flex-grow: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(212,167,106,0.3), transparent);"></div>
+                        </div>
+                        <p style="color: #bbb; font-size: 0.95rem; max-width: 600px; margin: 0.8rem auto 0; opacity: 0.8;">Follow the journey from basic education to advanced research in Computer Science</p>
+                    </div>
+                    
+                    <!-- Roadmap Timeline -->
+                    <div class="education__roadmap" style="position: relative; padding-left: 2.5rem; z-index: 2; margin: 0 2rem;">
+                        <!-- Better connecting line that visually passes through all nodes with enhanced polish -->
+                        <div style="position: absolute; left: 5px; top: 0; bottom: 0; width: 10px; z-index: 2;">
+                            <!-- Animated SVG connecting line -->
+                            <svg height="100%" width="100%" viewBox="0 0 10 100" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="roadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#d4a76a" stop-opacity="0.8" />
+                                        <stop offset="50%" stop-color="#d4a76a" stop-opacity="0.5" />
+                                        <stop offset="100%" stop-color="#d4a76a" stop-opacity="0.8" />
+                                    </linearGradient>
+                                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feGaussianBlur stdDeviation="2" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                </defs>
+                                <path d="M5,0 L5,100" stroke="url(#roadGradient)" stroke-width="4" stroke-dasharray="5,5" filter="url(#glow)">
+                                    <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite" />
+                                </path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Ph.D. -->
+                        <div class="education__milestone" style="position: relative; margin-bottom: 4rem; padding-left: 3rem;">
+                            <div class="education__node" style="position: absolute; left: -1.7rem; top: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(35, 30, 25, 0.95); border: 3px solid #d4a76a; z-index: 3; box-shadow: 0 0 20px rgba(212,167,106,0.6); display: flex; align-items: center; justify-content: center; animation: nodePulse 2s infinite alternate;">
+                                <img class="edu-icon-gold" src="assets/img/icons8-education-64.png" alt="PhD Icon" style="width:22px; height:22px; object-fit:contain;" />
+                            </div>
+                            
+                            <div class="education__card">
+                                <div class="education__content">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.2rem;">
+                                            <img class="edu-icon-gold" src="assets/img/icons8-education-64.png" alt="PhD Icon" style="width:28px; height:28px; object-fit:contain;" />
+                                            <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">Ph.D.</h3>
+                                        </div>
+                                        <div style="padding: 0.3rem 1rem; background: rgba(212,167,106,0.15); border-radius: 30px; font-size: 0.9rem; color: #d4a76a; border: 1px solid rgba(212,167,106,0.3);">Pursuing</div>
+                                    </div>
+                                    
+                                    <div style="margin-left: 3.8rem;">
+                                        <div style="font-size: 1.05rem; color: #eee; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                            <ion-icon name="pin" style="margin-right: 0.5rem; color: #d4a76a;"></ion-icon>
+                                            Central University of Jammu
+                                        </div>
+                                        <div style="font-size: 0.9rem; color: #bbb; display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <ion-icon name="calendar" style="margin-right: 0.5rem; color: #999;"></ion-icon>
+                                            Feb. 2022 – till date
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- M.Tech -->
+                        <div class="education__milestone" style="position: relative; margin-bottom: 4rem; padding-left: 3rem;">
+                            <div class="education__node" style="position: absolute; left: -1.7rem; top: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(35, 30, 25, 0.95); border: 3px solid #d4a76a; z-index: 3; box-shadow: 0 0 20px rgba(212,167,106,0.6); display: flex; align-items: center; justify-content: center; animation: nodePulse 2s infinite alternate;">
+                                <img class="edu-icon-gold" src="assets/img/icons8-software-engineering-68.png" alt="MTech Icon" style="width:22px; height:22px; object-fit:contain;" />
+                            </div>
+                            
+                            <div class="education__card">
+                                <div class="education__content">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.2rem;">
+                                            <img class="edu-icon-gold" src="assets/img/icons8-software-engineering-68.png" alt="MTech Icon" style="width:28px; height:28px; object-fit:contain;" />
+                                            <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">M.Tech.</h3>
+                                        </div>
+                                        <div style="padding: 0.3rem 1rem; background: rgba(212,167,106,0.15); border-radius: 30px; font-size: 0.9rem; color: #d4a76a; border: 1px solid rgba(212,167,106,0.3);">Pursuing</div>
+                                    </div>
+                                    
+                                    <div style="margin-left: 3.8rem;">
+                                        <div style="font-size: 1.05rem; color: #eee; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                            <ion-icon name="pin" style="margin-right: 0.5rem; color: #d4a76a;"></ion-icon>
+                                            IIT Patna (CSE)
+                                        </div>
+                                        <div style="font-size: 0.9rem; color: #bbb; display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <ion-icon name="calendar" style="margin-right: 0.5rem; color: #999;"></ion-icon>
+                                            March 2025 – till date
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- MCA -->
+                        <div class="education__milestone" style="position: relative; margin-bottom: 4rem; padding-left: 3rem;">
+                            <div class="education__node" style="position: absolute; left: -1.7rem; top: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(35, 30, 25, 0.95); border: 3px solid #d4a76a; z-index: 3; box-shadow: 0 0 20px rgba(212,167,106,0.6); display: flex; align-items: center; justify-content: center; animation: nodePulse 2s infinite alternate;">
+                                <img class="edu-icon-gold" src="assets/img/icons8-artificial-intelligence-50.png" alt="MCA Icon" style="width:22px; height:22px; object-fit:contain;" />
+                            </div>
+                            
+                            <div class="education__card">
+                                <div class="education__content">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.2rem;">
+                                            <img class="edu-icon-gold" src="assets/img/icons8-artificial-intelligence-50.png" alt="MCA Icon" style="width:28px; height:28px; object-fit:contain;" />
+                                            <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">MCA</h3>
+                                        </div>
+                                        <div style="padding: 0.3rem 1rem; background: rgba(212,167,106,0.15); border-radius: 30px; font-size: 0.9rem; color: #d4a76a; border: 1px solid rgba(212,167,106,0.3);">7.70 CGPA</div>
+                                    </div>
+                                    
+                                    <div style="margin-left: 3.8rem;">
+                                        <div style="font-size: 1.05rem; color: #eee; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                            <ion-icon name="pin" style="margin-right: 0.5rem; color: #d4a76a;"></ion-icon>
+                                            University of Jammu (CSIT)
+                                        </div>
+                                        <div style="font-size: 0.9rem; color: #bbb; display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <ion-icon name="calendar" style="margin-right: 0.5rem; color: #999;"></ion-icon>
+                                            2015 – 2018
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- B.Sc -->
+                        <div class="education__milestone" style="position: relative; margin-bottom: 4rem; padding-left: 3rem;">
+                            <div class="education__node" style="position: absolute; left: -1.7rem; top: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(35, 30, 25, 0.95); border: 3px solid #d4a76a; z-index: 3; box-shadow: 0 0 20px rgba(212,167,106,0.6); display: flex; align-items: center; justify-content: center; animation: nodePulse 2s infinite alternate;">
+                                <img class="edu-icon-gold" src="assets/img/icons8-data-science-32.png" alt="BSc Icon" style="width:22px; height:22px; object-fit:contain;" />
+                            </div>
+                            
+                            <div class="education__card">
+                                <div class="education__content">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.2rem;">
+                                            <img class="edu-icon-gold" src="assets/img/icons8-data-science-32.png" alt="BSc Icon" style="width:28px; height:28px; object-fit:contain;" />
+                                            <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">B.Sc.</h3>
+                                        </div>
+                                        <div style="padding: 0.3rem 1rem; background: rgba(212,167,106,0.15); border-radius: 30px; font-size: 0.9rem; color: #d4a76a; border: 1px solid rgba(212,167,106,0.3);">61.39%</div>
+                                    </div>
+                                    
+                                    <div style="margin-left: 3.8rem;">
+                                        <div style="font-size: 1.05rem; color: #eee; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                            <ion-icon name="pin" style="margin-right: 0.5rem; color: #d4a76a;"></ion-icon>
+                                            University of Jammu
+                                        </div>
+                                        <div style="font-size: 0.9rem; color: #bbb; display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <ion-icon name="calendar" style="margin-right: 0.5rem; color: #999;"></ion-icon>
+                                            2012 – 2015
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 10+2 -->
+                        <div class="education__milestone" style="position: relative; margin-bottom: 4rem; padding-left: 3rem;">
+                            <div class="education__node" style="position: absolute; left: -1.7rem; top: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(35, 30, 25, 0.95); border: 3px solid #d4a76a; z-index: 3; box-shadow: 0 0 20px rgba(212,167,106,0.6); display: flex; align-items: center; justify-content: center; animation: nodePulse 2s infinite alternate;">
+                                <img class="edu-icon-gold" src="assets/img/icons8-education-50.png" alt="10+2 Icon" style="width:22px; height:22px; object-fit:contain;" />
+                            </div>
+                            
+                            <div class="education__card">
+                                <div class="education__content">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.2rem;">
+                                            <img class="edu-icon-gold" src="assets/img/icons8-education-50.png" alt="10+2 Icon" style="width:28px; height:28px; object-fit:contain;" />
+                                            <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">10+2</h3>
+                                        </div>
+                                        <div style="padding: 0.3rem 1rem; background: rgba(212,167,106,0.15); border-radius: 30px; font-size: 0.9rem; color: #d4a76a; border: 1px solid rgba(212,167,106,0.3);">68.2%</div>
+                                    </div>
+                                    
+                                    <div style="margin-left: 3.8rem;">
+                                        <div style="font-size: 1.05rem; color: #eee; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                            <ion-icon name="pin" style="margin-right: 0.5rem; color: #d4a76a;"></ion-icon>
+                                            J&K State Board
+                                        </div>
+                                        <div style="font-size: 0.9rem; color: #bbb; display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <ion-icon name="calendar" style="margin-right: 0.5rem; color: #999;"></ion-icon>
+                                            2011 – 2012
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DCA -->
+                        <div class="education__milestone" style="position: relative; margin-bottom: 4rem; padding-left: 3rem;">
+                            <div class="education__node" style="position: absolute; left: -1.7rem; top: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(35, 30, 25, 0.95); border: 3px solid #d4a76a; z-index: 3; box-shadow: 0 0 20px rgba(212,167,106,0.6); display: flex; align-items: center; justify-content: center; animation: nodePulse 2s infinite alternate;">
+                                <img class="edu-icon-gold" src="assets/img/icons8-database-management-64.png" alt="DCA Icon" style="width:22px; height:22px; object-fit:contain;" />
+                            </div>
+                            
+                            <div class="education__card">
+                                <div class="education__content">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.2rem;">
+                                            <img class="edu-icon-gold" src="assets/img/icons8-database-management-64.png" alt="DCA Icon" style="width:28px; height:28px; object-fit:contain;" />
+                                            <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">Diploma in Computer Application (DCA)</h3>
+                                        </div>
+                                        <div style="padding: 0.3rem 1rem; background: rgba(212,167,106,0.15); border-radius: 30px; font-size: 0.9rem; color: #d4a76a; border: 1px solid rgba(212,167,106,0.3);">87.5%</div>
+                                    </div>
+                                    
+                                    <div style="margin-left: 3.8rem;">
+                                        <div style="font-size: 1.05rem; color: #eee; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                            <ion-icon name="pin" style="margin-right: 0.5rem; color: #d4a76a;"></ion-icon>
+                                            Shruti Institute of IT & Management, Kishtwar, J&K
+                                        </div>
+                                        <div style="font-size: 0.9rem; color: #bbb; display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <ion-icon name="calendar" style="margin-right: 0.5rem; color: #999;"></ion-icon>
+                                            2010 – 2011
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Custom animation for map effects -->
+                    <style>
+                        @keyframes glow {
+                            0% {
+                                opacity: 0.5;
+                                box-shadow: 0 0 5px rgba(212,167,106,0.3);
+                            }
+                            100% {
+                                opacity: 1;
+                                box-shadow: 0 0 15px rgba(212,167,106,0.7);
+                            }
+                        }
+                        
+                        @keyframes pulse {
+                            0% {
+                                box-shadow: 0 0 5px rgba(212,167,106,0.1);
+                                transform: scale(0.95);
+                            }
+                            100% {
+                                box-shadow: 0 0 20px rgba(212,167,106,0.3);
+                                transform: scale(1.05);
+                            }
+                        }
+                        
+                        @keyframes nodePulse {
+                            0% {
+                                box-shadow: 0 0 10px rgba(212,167,106,0.3);
+                                transform: scale(1);
+                            }
+                            100% {
+                                box-shadow: 0 0 25px rgba(212,167,106,0.7);
+                                transform: scale(1.1);
+                            }
+                        }
+                        
+                        @keyframes roadPulse {
+                            0% {
+                                opacity: 0.7;
+                                box-shadow: 0 0 5px rgba(212,167,106,0.2);
+                            }
+                            50% {
+                                opacity: 1;
+                                box-shadow: 0 0 15px rgba(212,167,106,0.4);
+                            }
+                            100% {
+                                opacity: 0.7;
+                                box-shadow: 0 0 5px rgba(212,167,106,0.2);
+                            }
+                        }
+                        
+                        @keyframes travelUp {
+                            0% {
+                                transform: translateY(200px) rotate(0deg);
+                                opacity: 0;
+                            }
+                            10% {
+                                opacity: 0.8;
+                            }
+                            90% {
+                                opacity: 0.8;
+                            }
+                            100% {
+                                transform: translateY(-200px) rotate(0deg);
+                                opacity: 0;
+                            }
+                        }
+                        
+                        /* Make cards glow on hover */
+                        .education__card:hover {
+                            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212,167,106,0.5) !important;
+                            transform: translateY(-5px);
+                        }
+                        
+                        @keyframes floatAcross {
+                            0% {
+                                transform: translateX(-5%);
+                                opacity: 0;
+                            }
+                            5% {
+                                opacity: 0.8;
+                            }
+                            95% {
+                                opacity: 0.8;
+                            }
+                            100% {
+                                transform: translateX(105%);
+                                opacity: 0;
+                            }
+                    }
+                </style>
+                <style>
+                .edu-icon-gold {
+                  filter: sepia(1) hue-rotate(10deg) saturate(5) brightness(1.1);
+                        }
+                    </style>
+                </div>
+            </section>
+
+            <!-- COMPETITIVE EXAMINATIONS -->
+            <section class="exams section" id="exams">
+                <h2 class="section-title">Competitive Examinations</h2>
+                
+                <div class="exams__subtitle">
+                    <p>Successfully cleared multiple national and state level eligibility examinations demonstrating subject expertise.</p>
+                </div>
+                
+                <div class="exams__container">
+                    <div class="exams__table">
+                        <div class="exams__header-row">
+                            <div class="exams__header-cell">EXAMINATION</div>
+                            <div class="exams__header-cell">EXAMINING BODY</div>
+                            <div class="exams__header-cell">SESSION</div>
+                        </div>
+                        
+                        <div class="exams__row">
+                            <div class="exams__cell">National Eligibility Test (NET)</div>
+                            <div class="exams__cell">NTA UGC NET</div>
+                            <div class="exams__cell">DEC 2020 & JUNE 2021</div>
+                        </div>
+                        
+                        <div class="exams__row">
+                            <div class="exams__cell">National Eligibility Test (NET)</div>
+                            <div class="exams__cell">NTA UGC NET</div>
+                            <div class="exams__cell">JUNE 2020</div>
+                        </div>
+                        
+                        <div class="exams__row">
+                            <div class="exams__cell">National Eligibility Test (NET)</div>
+                            <div class="exams__cell">NTA UGC NET</div>
+                            <div class="exams__cell">DEC 2019</div>
+                        </div>
+                        
+                        <div class="exams__row">
+                            <div class="exams__cell">HP State Eligibility Test (HP SET)</div>
+                            <div class="exams__cell">HP-PSC SET</div>
+                            <div class="exams__cell">NOV 2019</div>
+                        </div>
+                        
+                        <div class="exams__row">
+                            <div class="exams__cell">National Eligibility Test (NET)</div>
+                            <div class="exams__cell">NTA UGC NET</div>
+                            <div class="exams__cell">JUNE 2019</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EMPLOYMENT -->
+            <section class="employment section" id="employment">
+                <h2 class="section-title">Employment History</h2>
+                
+                <div class="employment__intro">
+                    <p>Academic professional with experience in teaching, research, and departmental leadership in educational institutions.</p>
+                </div>
+
+            <div class="employment__container">
+                <div class="employment__cards">
+                    <!-- Current Position -->
+                    <div class="employment__card" onclick="this.classList.toggle('flipped')">
+                        <div class="employment__card-inner">
+                            <div class="employment__card-front">
+                                <div class="employment__badge">Current</div>
+                                <div class="employment__icon">
+                                    <ion-icon name="school-outline"></ion-icon>
+                                </div>
+                                <h3 class="employment__title">Assistant Professor</h3>
+                                <div class="employment__period">
+                                    <ion-icon name="calendar"></ion-icon>
+                                    01-July-2024 – till date
+                                </div>
+                                <div class="employment__institution">CHRIST University</div>
+                                <div class="employment__hint">
+                                    <ion-icon name="arrow-forward"></ion-icon>
+                                    Click to see details
+                                </div>
+                            </div>
+                            <div class="employment__card-back">
+                                <div class="employment__back-content">
+                                    <h3 class="employment__title">Assistant Professor</h3>
+                                    <div class="employment__department">Department of Computer Science</div>
+                                    <div class="employment__full-institution">School of Sciences, CHRIST (Deemed to be University)</div>
+                                    <div class="employment__location">
+                                        <ion-icon name="location"></ion-icon>
+                                        Delhi NCR, 201003 – India
+                                    </div>
+                                    <div class="employment__responsibilities">
+                                        <p>• Teaching and Research in Computer Science</p>
+                                        <p>• Academic Leadership</p>
+                                        <p>• Student Mentoring</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctoral Research -->
+                    <div class="employment__card" onclick="this.classList.toggle('flipped')">
+                        <div class="employment__card-inner">
+                            <div class="employment__card-front">
+                                <div class="employment__badge">Current</div>
+                                <div class="employment__icon">
+                                    <ion-icon name="book-outline"></ion-icon>
+                                </div>
+                                <h3 class="employment__title">Doctoral Research Scholar</h3>
+                                <div class="employment__period">
+                                    <ion-icon name="calendar"></ion-icon>
+                                    February 14, 2022 – till date
+                                </div>
+                                <div class="employment__institution">Central University of Jammu</div>
+                                <div class="employment__hint">
+                                    <ion-icon name="arrow-forward"></ion-icon>
+                                    Click to see details
+                                </div>
+                            </div>
+                            <div class="employment__card-back">
+                                <div class="employment__back-content">
+                                    <h3 class="employment__title">Doctoral Research Scholar</h3>
+                                    <div class="employment__department">Department of Computer Science & IT</div>
+                                    <div class="employment__full-institution">Central University of Jammu</div>
+                                    <div class="employment__location">
+                                        <ion-icon name="location"></ion-icon>
+                                        Jammu and Kashmir, 181143 – India
+                                    </div>
+                                    <div class="employment__responsibilities">
+                                        <p>• Pursuing Ph.D. in Computer Science</p>
+                                        <p>• Research in AI and Machine Learning</p>
+                                        <p>• Academic Development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Position -->
+                    <div class="employment__card" onclick="this.classList.toggle('flipped')">
+                        <div class="employment__card-inner">
+                            <div class="employment__card-front">
+                                <div class="employment__badge">Previous</div>
+                                <div class="employment__icon">
+                                    <ion-icon name="people-outline"></ion-icon>
+                                </div>
+                                <h3 class="employment__title">Lecturer</h3>
+                                <div class="employment__period">
+                                    <ion-icon name="calendar"></ion-icon>
+                                    21-August-2019 – 12-February-2022
+                                </div>
+                                <div class="employment__institution">University of Jammu</div>
+                                <div class="employment__hint">
+                                    <ion-icon name="arrow-forward"></ion-icon>
+                                    Click to see details
+                                </div>
+                            </div>
+                            <div class="employment__card-back">
+                                <div class="employment__back-content">
+                                    <h3 class="employment__title">Lecturer (Level of Assistant Professor)</h3>
+                                    <div class="employment__department">Department of Computer Science & IT</div>
+                                    <div class="employment__full-institution">Kishtwar Campus, University of Jammu</div>
+                                    <div class="employment__location">
+                                        <ion-icon name="location"></ion-icon>
+                                        Kishtwar, Jammu & Kashmir, 182204 – India
+                                    </div>
+                                    <div class="employment__responsibilities">
+                                        <p>• Lecturer & In-charge Head</p>
+                                        <p>• Department Management</p>
+                                        <p>• Teaching and Administration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <!-- PUBLICATIONS -->
+            <section class="publications section" id="publications">
+                <h2 class="section-title">Publications</h2>
+                
+                <div class="publications__container bd-grid">
+                    <div class="publications__filters">
+                        <span class="publications__filter active" data-filter="all">All</span>
+                        <span class="publications__filter" data-filter="journal">Journal Papers</span>
+                        <span class="publications__filter" data-filter="conference">Conference Papers</span>
+                        <span class="publications__filter" data-filter="book">Book Chapters</span>
+                    </div>
+                    
+                    <div class="publications__content">
+                        <!-- Journal Papers -->
+                        <div class="publications__item journal">
+                            <h3 class="publications__title">Deep Learning Approaches for Medical Image Analysis</h3>
+                            <p class="publications__authors">Singh, K., Sharma, A., & Kumar, P. (2023)</p>
+                            <p class="publications__journal">IEEE Transactions on Medical Imaging, 42(3), 567-582</p>
+                            <p class="publications__abstract">
+                                This paper presents novel deep learning architectures for medical image segmentation and classification, achieving state-of-the-art performance on benchmark datasets.
+                            </p>
+                            <div class="publications__links">
+                                <a href="#" class="publications__link">DOI: 10.1109/TMI.2023.3456789</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publications__item journal">
+                            <h3 class="publications__title">Ensemble Methods for Improved Disease Prediction</h3>
+                            <p class="publications__authors">Kumar, R., Singh, K., & Verma, S. (2022)</p>
+                            <p class="publications__journal">Journal of Biomedical Informatics, 125, 103952</p>
+                            <p class="publications__abstract">
+                                An ensemble-based approach combining multiple machine learning models to enhance prediction accuracy for various diseases using clinical data.
+                            </p>
+                            <div class="publications__links">
+                                <a href="#" class="publications__link">DOI: 10.1016/j.jbi.2022.103952</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Conference Papers -->
+                        <div class="publications__item conference">
+                            <h3 class="publications__title">Meta-Learning for Few-Shot Image Classification</h3>
+                            <p class="publications__authors">Singh, K., & Joshi, R. (2022)</p>
+                            <p class="publications__journal">Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 4567-4576</p>
+                            <p class="publications__abstract">
+                                A novel meta-learning approach that enables neural networks to learn from limited examples, achieving high accuracy with minimal training data.
+                            </p>
+                            <div class="publications__links">
+                                <a href="#" class="publications__link">DOI: 10.1109/CVPR.2022.01234</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publications__item conference">
+                            <h3 class="publications__title">Explainable AI for Healthcare Decision Support</h3>
+                            <p class="publications__authors">Mehta, N., Singh, K., & Patel, D. (2021)</p>
+                            <p class="publications__journal">International Conference on Machine Learning and Applications (ICMLA), 329-336</p>
+                            <p class="publications__abstract">
+                                A framework for creating explainable AI models that provide interpretable results for healthcare professionals, enhancing trust in AI-assisted diagnosis.
+                            </p>
+                            <div class="publications__links">
+                                <a href="#" class="publications__link">DOI: 10.1109/ICMLA.2021.567890</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Book Chapters -->
+                        <div class="publications__item book">
+                            <h3 class="publications__title">Advances in Computational Intelligence for Healthcare</h3>
+                            <p class="publications__authors">Singh, K., & Kumar, V. (2022)</p>
+                            <p class="publications__journal">In: Smart Healthcare Systems: Current Status and Future Challenges. Springer, pp. 145-167</p>
+                            <p class="publications__abstract">
+                                A comprehensive review of computational intelligence techniques applied to various healthcare domains, including diagnosis, prognosis, and treatment planning.
+                            </p>
+                            <div class="publications__links">
+                                <a href="#" class="publications__link">DOI: 10.1007/978-3-030-12345-6_7</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publications__item book">
+                            <h3 class="publications__title">Machine Learning for Medical Image Analysis</h3>
+                            <p class="publications__authors">Gupta, A., Singh, K., & Rao, S. (2021)</p>
+                            <p class="publications__journal">In: Handbook of Medical Image Computing and Computer Assisted Intervention. Academic Press, pp. 219-243</p>
+                            <p class="publications__abstract">
+                                An in-depth exploration of machine learning algorithms for medical image analysis, with case studies on brain tumor segmentation and lung nodule detection.
+                            </p>
+                            <div class="publications__links">
+                                <a href="#" class="publications__link">DOI: 10.1016/B978-0-12-816176-0.00013-5</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AWARDS -->
+            <section class="awards section" id="awards">
+                <h2 class="section-title">Awards & Achievements</h2>
+                
+                <div class="awards__container bd-grid">
+                    <div class="awards__content">
+                        <div class="awards__item">
+                            <div class="awards__icon">
+                                <ion-icon name="ribbon"></ion-icon>
+                            </div>
+                            <div class="awards__data">
+                                <h3 class="awards__title">National Eligibility Test (NET)</h3>
+                                <p class="awards__description">
+                                    Qualified four times consecutively in 2019-2021, demonstrating consistent academic excellence in computer science at the national level.
+                                </p>
+                                <span class="awards__year">2019-2021</span>
+                            </div>
+                        </div>
+                        
+                        <div class="awards__item">
+                            <div class="awards__icon">
+                                <ion-icon name="medal"></ion-icon>
+                            </div>
+                            <div class="awards__data">
+                                <h3 class="awards__title">Himachal Pradesh State Eligibility Test (HP-SET)</h3>
+                                <p class="awards__description">
+                                    Qualified in 2019, recognized for academic and research capabilities in computer science at the state level.
+                                </p>
+                                <span class="awards__year">2019</span>
+                            </div>
+                        </div>
+                        
+                        <div class="awards__item">
+                            <div class="awards__icon">
+                                <ion-icon name="trophy"></ion-icon>
+                            </div>
+                            <div class="awards__data">
+                                <h3 class="awards__title">Best Research Paper Award</h3>
+                                <p class="awards__description">
+                                    Awarded for exceptional contribution to the field of AI in healthcare at the International Conference on Intelligent Systems.
+                                </p>
+                                <span class="awards__year">2022</span>
+                            </div>
+                        </div>
+                        
+                        <div class="awards__item">
+                            <div class="awards__icon">
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                            <div class="awards__data">
+                                <h3 class="awards__title">Young Researcher Award</h3>
+                                <p class="awards__description">
+                                    Recognized for significant contributions to the field of computational intelligence and its applications in healthcare.
+                                </p>
+                                <span class="awards__year">2021</span>
+                            </div>
+                        </div>
+                        
+                        <div class="awards__item">
+                            <div class="awards__icon">
+                                <ion-icon name="school"></ion-icon>
+                            </div>
+                            <div class="awards__data">
+                                <h3 class="awards__title">University Gold Medal</h3>
+                                <p class="awards__description">
+                                    Awarded for academic excellence in Master of Computer Applications program, standing first in the university.
+                                </p>
+                                <span class="awards__year">2018</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACTIVITIES -->
+            <section class="activities section" id="activities">
+                <h2 class="section-title">Professional Activities</h2>
+                
+                <div class="activities__container bd-grid">
+                    <div class="activities__content">
+                        <div class="activities__group">
+                            <h3 class="activities__subtitle">Academic Services</h3>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Editorial Board Member</h4>
+                                    <p class="activities__detail">
+                                        Journal of Computational Intelligence in Healthcare (2022-Present)
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Reviewer</h4>
+                                    <p class="activities__detail">
+                                        IEEE Transactions on Neural Networks and Learning Systems
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Reviewer</h4>
+                                    <p class="activities__detail">
+                                        Journal of Biomedical Informatics
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activities__group">
+                            <h3 class="activities__subtitle">Conference Organization</h3>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Technical Program Committee Member</h4>
+                                    <p class="activities__detail">
+                                        International Conference on Machine Learning Applications (ICMLA 2023)
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Session Chair</h4>
+                                    <p class="activities__detail">
+                                        AI in Healthcare - International Conference on Computational Intelligence (ICCI 2022)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activities__group">
+                            <h3 class="activities__subtitle">Professional Memberships</h3>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Senior Member</h4>
+                                    <p class="activities__detail">
+                                        IEEE Computer Society (2020-Present)
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Member</h4>
+                                    <p class="activities__detail">
+                                        Association for Computing Machinery (ACM) (2018-Present)
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="activities__item">
+                                <div class="activities__marker"></div>
+                                <div class="activities__info">
+                                    <h4 class="activities__name">Member</h4>
+                                    <p class="activities__detail">
+                                        International Association for Pattern Recognition (IAPR) (2019-Present)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT -->
+            <section class="contact section" id="contact">
+                <h2 class="section-title">Contact Me</h2>
+                
+                <div class="contact__container bd-grid">
+                    <div class="contact__info">
+                        <div class="contact__card">
+                            <div class="contact__card-icon">
+                                <ion-icon name="mail"></ion-icon>
+                            </div>
+                            <h3 class="contact__card-title">Email</h3>
+                            <span class="contact__card-data">kuljeet.singh@christuniversity.in</span>
+                            <a href="mailto:kuljeet.singh@christuniversity.in" class="contact__button">
+                                Write me <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                        
+                        <div class="contact__card">
+                            <div class="contact__card-icon">
+                                <ion-icon name="call"></ion-icon>
+                            </div>
+                            <h3 class="contact__card-title">Phone</h3>
+                            <span class="contact__card-data">+91 98765 43210</span>
+                            <a href="tel:+919876543210" class="contact__button">
+                                Call me <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                        
+                        <div class="contact__card">
+                            <div class="contact__card-icon">
+                                <ion-icon name="location"></ion-icon>
+                            </div>
+                            <h3 class="contact__card-title">Address</h3>
+                            <span class="contact__card-data">Department of Computer Science, CHRIST University, Delhi-NCR</span>
+                            <a href="https://maps.google.com" target="_blank" class="contact__button">
+                                View on map <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <form action="" class="contact__form">
+                        <div class="contact__inputs">
+                            <div class="contact__content">
+                                <label for="name" class="contact__label">Name</label>
+                                <input type="text" id="name" class="contact__input">
+                            </div>
+                            
+                            <div class="contact__content">
+                                <label for="email" class="contact__label">Email</label>
+                                <input type="email" id="email" class="contact__input">
+                            </div>
+                            
+                            <div class="contact__content">
+                                <label for="subject" class="contact__label">Subject</label>
+                                <input type="text" id="subject" class="contact__input">
+                            </div>
+                            
+                            <div class="contact__content">
+                                <label for="message" class="contact__label">Message</label>
+                                <textarea id="message" cols="30" rows="7" class="contact__input"></textarea>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="contact__button-submit">
+                                    Send Message <ion-icon name="paper-plane-outline"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- RESEARCH PUBLICATIONS -->
+            <section class="research-publications section" id="research">
+                <h2 class="section-title">Research Journal Publications</h2>
+                
+                <div class="research-publications__stats">
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">31</div>
+                        <div class="research-publications__stat-label">Total Publications</div>
+                    </div>
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">23</div>
+                        <div class="research-publications__stat-label">SCI Publications</div>
+                    </div>
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">5</div>
+                        <div class="research-publications__stat-label">Scopus Publications</div>
+                    </div>
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">3</div>
+                        <div class="research-publications__stat-label">UGC-Care Listed</div>
+                    </div>
+                </div>
+
+                <div class="research-publications__filters">
+                    <button class="research-publications__filter active" data-filter="all">All</button>
+                    <button class="research-publications__filter" data-filter="sci">SCI</button>
+                    <button class="research-publications__filter" data-filter="scopus">Scopus</button>
+                    <button class="research-publications__filter" data-filter="ugc">UGC-Care</button>
+                </div>
+
+                <div class="research-publications__grid">
+                    <!-- Publication cards will be dynamically added here -->
+                </div>
+
+                <button class="research-publications__load-more">Load More Publications</button>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <h3 class="footer__title">Prof. Kuljeet Singh</h3>
+                    <p class="footer__description">
+                        Assistant Professor at Department of Computer Science,<br>
+                        CHRIST (Deemed to be University), Delhi-NCR, India
+                    </p>
+                </div>
+                
+                <div class="footer__content">
+                    <h3 class="footer__title">Explore</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Home</a></li>
+                        <li><a href="#about" class="footer__link">About</a></li>
+                        <li><a href="#skills" class="footer__link">Skills</a></li>
+                        <li><a href="#education" class="footer__link">Education</a></li>
+                        <li><a href="#exams" class="footer__link">Examinations</a></li>
+                        <li><a href="#research" class="footer__link">Research</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__content">
+                    <h3 class="footer__title">Follow Me</h3>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-google"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="footer__copy">© 2023 Prof. Kuljeet Singh. All rights reserved.</p>
+        </footer>
+
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/ScrollTrigger.min.js"></script>
+
+        <!-- MAIN -->
+        <script src="assets/js/main.js"></script>
+    
+        <!-- ICONS -->
+        <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+
+        <!-- Research Publications Script -->
+        <script>
+            const publications = [
+                {
+                    title: "GeneRiskCalc: A Web-Based Tool for Genetic Risk Association Analysis in Case-Control Studies",
+                    authors: "Amrit Sudershan, Kuljeet Singh",
+                    journal: "BMC Bioinformatics",
+                    issn: "1471-2105",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "2.9",
+                    quartile: "Q1",
+                    category: "sci"
+                },
+                {
+                    title: "A Hybrid Ensemble Framework with Particle Swarm Optimization for Network Anomaly Detection",
+                    authors: "Narinder Verma, Gourav Kumar, Kuljeet Singh*",
+                    journal: "Discover Applied Sciences",
+                    issn: "3004-9261",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    category: "scopus"
+                },
+                {
+                    title: "A novel univariate feature selection with ANOVA F-test based machine learning model for Intrusion Detection Framework of Robotics system",
+                    authors: "Narinder Verma, Neerendra Kumar, Kuljeet Singh",
+                    journal: "International Journal of Computational Intelligence Systems",
+                    issn: "1875-6883",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "2.5",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "Exploring the impact of social media on shaping collective value perceptions and motivations for electric vehicle adoption",
+                    authors: "Karan Dixit, Anurag Sinha, Kuljeet Singh* et al.",
+                    journal: "OPSEARCH",
+                    issn: "0975-0320",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    impact: "1.4",
+                    quartile: "Q2",
+                    category: "scopus"
+                },
+                {
+                    title: "Breast Cancer Prediction Using Self Adaptive-Sea Lion Optimization based Recurrent Neural Network product",
+                    authors: "Santhosh Kumar G, Anurag Sinha, Kuljeet Singh* et al.",
+                    journal: "Evolving Systems",
+                    issn: "1868-6486",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "2.7",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "Machine Learning in Neuroimaging and Computational Pathophysiology of Parkinson's Disease: A comprehensive review and meta-analysis",
+                    authors: "Khushi Sharma, Manjula Shanbhog, Kuljeet Singh*",
+                    journal: "Clinical Neurology and Neurosurgery",
+                    issn: "1872-6968",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Elsevier",
+                    type: "SCIE",
+                    impact: "1.8",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "RAG-Descriptor Enhanced Secure Cloth Recommendation System: A Hybrid Algorithm and Explainable AI-Driven Content-Based Image Retrieval (CBIR) Framework",
+                    authors: "Anurag Sinha, Kuljeet Singh et al.",
+                    journal: "Journal of Intelligent Systems",
+                    issn: "2191-026X",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "DE GRUYTER",
+                    type: "ESCI",
+                    impact: "2.1",
+                    quartile: "Q3",
+                    category: "sci"
+                },
+                {
+                    title: "Clinical Insights into Neuroimaging and AI-Driven Techniques in Alzheimer's disease: A Systematic Review and Meta-Analysis",
+                    authors: "Deepti Nayak, Manjula Shanbhog, Kuljeet Singh*",
+                    journal: "Journal of Clinical Neuroscience",
+                    issn: "1532-2653",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Elsevier",
+                    type: "SCIE",
+                    impact: "1.9",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "Neuroimaging and AI-Driven Approaches in Autism Spectrum Disorder: A Systematic Review of Emerging Diagnostics and Therapeutics",
+                    authors: "Khushi Mogha, Neha Saini, Kuljeet Singh*",
+                    journal: "Discover Applied Sciences",
+                    issn: "3004-9261",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    category: "scopus"
+                },
+                {
+                    title: "A Systematic Review of Brain Imaging Studies to Mitigate Schizophrenia Risk: Insights from the Past to Shape the Future",
+                    authors: "Cheshta Nagpal, Kuljeet Singh*",
+                    journal: "Psychiatry Research",
+                    issn: "1872-7123",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Elsevier",
+                    type: "SCIE",
+                    impact: "4.2",
+                    quartile: "Q1",
+                    category: "sci"
+                },
+                {
+                    title: "Effective Detection of Covid-19 using Xception Net Architecture: A Technical Investigation using X-ray Images",
+                    authors: "Surbhi Gupta, Kuljeet Singh*, et al.",
+                    journal: "Health Informatics Journal",
+                    issn: "1741-2811",
+                    year: "2024",
+                    status: "Communicated",
+                    publisher: "SAGE Journals",
+                    type: "SSCI",
+                    impact: "2.2",
+                    category: "sci"
+                },
+                {
+                    title: "BC-MBINet: A Novel Architecture for Accurate Classification of Breast Cancer with Microscopic Biopsy Images using Deep Convolutional Neural Networks",
+                    authors: "Kuljeet Singh*, Amrit Sudershan, et al.",
+                    journal: "International Journal of Pattern Recognition and Artificial Intelligence",
+                    issn: "1793-6381",
+                    year: "2022",
+                    status: "Communicated",
+                    publisher: "World Scientific",
+                    type: "SCIE",
+                    impact: "1.261",
+                    category: "sci"
+                },
+                {
+                    title: "Deep CP-CXR: A Deep Learning Model for Classification of Covid-19 and Pneumonia Disease using Chest X-ray Images",
+                    authors: "Kuljeet Singh*, Anubha Gaur, et al.",
+                    journal: "Annals of Data Science",
+                    issn: "2198-5812",
+                    year: "2024",
+                    status: "Published",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    quartile: "Q1",
+                    category: "scopus"
+                },
+                {
+                    title: "COVID-19 changed our world: A systematic review",
+                    authors: "Kuljeet Singh, Agar Chander Pushap, et al.",
+                    journal: "Global Health Economics and Sustainability",
+                    issn: "2972-4570",
+                    year: "2024",
+                    status: "Published",
+                    publisher: "Crossref",
+                    category: "ugc"
+                },
+                {
+                    title: "IRAM–NET Model: Image Residual Agnostics Meta Learning based Network for Rare De Novo Glioblastoma Diagnosis",
+                    authors: "Kuljeet Singh*, Deepti Malhotra",
+                    journal: "Neural Computing and Applications",
+                    issn: "1433-3058",
+                    year: "2024",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "4.5",
+                    quartile: "Q1",
+                    category: "sci"
+                },
+                {
+                    title: "A comprehensive investigation of risk association between the -786 T> C, +884 G > A, VNTR, rs743506, rs3918226 of eNOS and susceptibility of migraine: A updated meta-analysis utilizing Trial Sequential Analysis",
+                    authors: "Amrit Sudershan, Kuljeet Singh, et al.",
+                    journal: "Journal of Molecular Neuroscience",
+                    issn: "1559-1166",
+                    year: "2023",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "3.1",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "BC-NET: Early Treatment of Breast Cancer using Nested Ensemble Technique of Machine Learning",
+                    authors: "Kuljeet Singh*, Sourabh Shastri, et al.",
+                    journal: "Automatic Control and Computer Sciences",
+                    issn: "1558-108X",
+                    year: "2023",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "ESCI",
+                    impact: "0.9",
+                    quartile: "Q3",
+                    category: "sci"
+                },
+                {
+                    title: "Meta-Health: Learning-to-learn (Meta-Learning) as a Next Generation of Deep Learning Exploring Healthcare Challenges and Solutions for Rare Disorders: A Systematic Analysis",
+                    authors: "Kuljeet Singh*, Deepti Malhotra",
+                    journal: "Archives of Computational Methods in Engineering",
+                    issn: "1886-1784",
+                    year: "2023",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "9.7",
+                    quartile: "Q1",
+                    category: "sci"
+                },
+                {
+                    title: "LiteCovidNet: A Lightweight Deep Neural Network Model for detection of COVID-19 using X-ray Images",
+                    authors: "Sourabh Shastri, Sachin Kumar, Shilpa Mahajan, Kuljeet Singh, et al.",
+                    journal: "International Journal of Imaging Systems and Technology",
+                    issn: "1098-1098",
+                    year: "2022",
+                    status: "Accepted",
+                    publisher: "Wiley",
+                    type: "SCIE",
+                    impact: "3.3",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "The Complexities of Migraine: A Debate Among Migraine Researchers: A Review",
+                    authors: "Amrit Sudershan, Kanak Mahajan, Kuljeet Singh, et al.",
+                    journal: "Clinical Neurology and Neurosurgery",
+                    issn: "0303-8467",
+                    year: "2022",
+                    status: "Accepted",
+                    publisher: "Elsevier",
+                    type: "SCIE",
+                    impact: "1.9",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "CheXImageNet: A Novel Architecture for Accurate Classification of Covid-19 with Chest X-ray Digital Images using Deep Convolutional Neural Networks",
+                    authors: "Sourabh Shastri, Isha Kansal, Sachin Kumar, Kuljeet Singh, et al.",
+                    journal: "Health and Technology",
+                    issn: "2190-7196",
+                    year: "2022",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "ESCI",
+                    impact: "2.5",
+                    quartile: "Q3",
+                    category: "sci"
+                },
+                {
+                    title: "Black Fungus Immunosuppressive Epidemic with Covid-19 Associated Mucormycosis (Zygomycosis): A Clinical and Diagnostic Perspective from India",
+                    authors: "Kuljeet Singh*, Sachin Kumar, et al.",
+                    journal: "Immunogenetics",
+                    issn: "1432-1211",
+                    year: "2021",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "3.2",
+                    quartile: "Q3",
+                    category: "sci"
+                },
+                {
+                    title: "CoBiD-Net: A Tailored Deep Learning Ensemble Model for Time Series Forecasting of Covid-19",
+                    authors: "Sourabh Shastri, Kuljeet Singh*, et al.",
+                    journal: "Spatial Information Research",
+                    issn: "2366-3294",
+                    year: "2021",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "ESCI",
+                    impact: "2.4",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "NestEn_SmVn: boosted nested ensemble multiplexing to diagnose coronary artery disease",
+                    authors: "Sourabh Shastri, Kuljeet Singh, et al.",
+                    journal: "Evolving Systems",
+                    issn: "1868-6486",
+                    year: "2021",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "3.2",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "Time series forecasting of Covid-19 using deep learning models: India-USA comparative case study",
+                    authors: "Sourabh Shastri, Kuljeet Singh, et al.",
+                    journal: "Chaos, Solitons and Fractals",
+                    issn: "0960-0779",
+                    year: "2020",
+                    status: "Accepted",
+                    publisher: "Elsevier",
+                    type: "SCIE",
+                    impact: "7.8",
+                    quartile: "Q1",
+                    category: "sci"
+                },
+                {
+                    title: "A nested stacking ensemble model for predicting districts with high and low maternal mortality ratio (MMR) in India",
+                    authors: "Sourabh Shastri, Paramjit Kour, Sachin Kumar, Kuljeet Singh, et al.",
+                    journal: "International Journal of Information Technology",
+                    issn: "2511-2112",
+                    year: "2020",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    quartile: "Q2",
+                    category: "scopus"
+                },
+                {
+                    title: "Deep-LSTM Ensemble Framework to Forecast Covid-19: An Insight to the Global Pandemic",
+                    authors: "Sourabh Shastri, Kuljeet Singh, et al.",
+                    journal: "International Journal of Information Technology",
+                    issn: "2511-2112",
+                    year: "2021",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    quartile: "Q2",
+                    category: "scopus"
+                },
+                {
+                    title: "GBoost: A novel Grading-AdaBoost Ensemble approach for automatic identification of Erythemato-Squamous Disease",
+                    authors: "Sourabh Shastri, Paramjit Kour, Sachin Kumar, Kuljeet Singh, et al.",
+                    journal: "International Journal of Information Technology",
+                    issn: "2511-2112",
+                    year: "2020",
+                    status: "Accepted",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    quartile: "Q2",
+                    category: "scopus"
+                },
+                {
+                    title: "Implementation of Exponential Smoothing for Forecasting Time Series Data",
+                    authors: "Kuljeet Singh, Sourabh Shastri, et al.",
+                    journal: "International Journal of Scientific Research in Computer Science Applications and Management Studies",
+                    issn: "2319-1953",
+                    year: "2019",
+                    status: "Accepted",
+                    publisher: "UGC-CARE List (India)",
+                    category: "ugc"
+                },
+                {
+                    title: "Performance Evaluation of ANN Classifier for Knowledge Discovery in Child Immunization Databases",
+                    authors: "Arun Singh Bhadwal, Sourabh Shastri, Paramjit Kour, Sachin Kumar, Kuljeet Singh, et al.",
+                    journal: "International Journal of Computational Engineering Research (IJCER)",
+                    issn: "2250-3005",
+                    year: "2019",
+                    status: "Accepted",
+                    publisher: "UGC-CARE List (India)",
+                    category: "ugc"
+                },
+                {
+                    title: "Classification of Maternal Healthcare Data using Naïve Bayes",
+                    authors: "Paramjit Kour, Sourabh Shastri, Arun Singh Bhadwal, Sachin Kumar, Kuljeet Singh, et al.",
+                    journal: "International Journal of Computer Sciences and Engineering",
+                    issn: "2347-2693",
+                    year: "2019",
+                    status: "Accepted",
+                    publisher: "UGC-CARE List (India)",
+                    category: "ugc"
+                }
+            ];
+
+            let currentFilter = 'all';
+            let visibleCount = 6;
+
+            function createPublicationCard(pub) {
+                return `
+                    <div class="research-publications__card" data-category="${pub.category}">
+                        <div class="research-publications__card-header">
+                            <h3 class="research-publications__card-title">${pub.title}</h3>
+                            <div class="research-publications__card-badges">
+                                ${pub.type ? `<span class="research-publications__badge type">${pub.type}</span>` : ''}
+                                ${pub.impact ? `<span class="research-publications__badge impact">IF: ${pub.impact}</span>` : ''}
+                                ${pub.quartile ? `<span class="research-publications__badge quartile">${pub.quartile}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="research-publications__card-body">
+                            <p class="research-publications__authors">${pub.authors}</p>
+                            <p class="research-publications__journal">${pub.journal} (ISSN: ${pub.issn})</p>
+                            <p class="research-publications__year">${pub.year}</p>
+                            <p class="research-publications__status">${pub.status}, ${pub.publisher}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function displayPublications() {
+                const grid = document.querySelector('.research-publications__grid');
+                const filteredPubs = currentFilter === 'all' 
+                    ? publications 
+                    : publications.filter(pub => pub.category === currentFilter);
+                
+                const visiblePubs = filteredPubs.slice(0, visibleCount);
+                grid.innerHTML = visiblePubs.map(createPublicationCard).join('');
+                
+                const loadMoreBtn = document.querySelector('.research-publications__load-more');
+                loadMoreBtn.style.display = visibleCount >= filteredPubs.length ? 'none' : 'block';
+            }
+
+            // Event Listeners
+            document.querySelectorAll('.research-publications__filter').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelector('.research-publications__filter.active').classList.remove('active');
+                    button.classList.add('active');
+                    currentFilter = button.dataset.filter;
+                    visibleCount = 6;
+                    displayPublications();
+                });
+            });
+
+            document.querySelector('.research-publications__load-more').addEventListener('click', () => {
+                visibleCount += 6;
+                displayPublications();
+            });
+
+            // Initial display
+            displayPublications();
+        </script>
+    </body>
+</html>

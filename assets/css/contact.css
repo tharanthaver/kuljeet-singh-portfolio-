@@ -1,0 +1,266 @@
+/* Contact Section Styling */
+.contact__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+/* Contact Info Cards */
+.contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact__card {
+    background: rgba(25, 25, 25, 0.6);
+    padding: 1.8rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact__card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 167, 106, 0.2);
+    border-left: 3px solid rgba(212, 167, 106, 0.5);
+}
+
+.contact__card-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(212, 167, 106, 0.3), rgba(212, 167, 106, 0.1));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(212, 167, 106, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact__card:hover .contact__card-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(212, 167, 106, 0.3);
+}
+
+.contact__card-icon ion-icon {
+    font-size: 1.8rem;
+    color: #fff;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.contact__card-title {
+    font-size: 1.2rem;
+    color: #d4a76a;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.contact__card-data {
+    color: #bbb;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    line-height: 1.6;
+}
+
+.contact__button {
+    display: inline-flex;
+    align-items: center;
+    color: #d4a76a;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact__button ion-icon {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.contact__button:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(212, 167, 106, 0.8);
+}
+
+.contact__button:hover ion-icon {
+    transform: translateX(5px);
+}
+
+/* Contact Form */
+.contact__form {
+    background: rgba(25, 25, 25, 0.6);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.contact__form:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 167, 106, 0.1);
+    border-left: 3px solid rgba(212, 167, 106, 0.3);
+}
+
+.contact__inputs {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.contact__content {
+    position: relative;
+}
+
+.contact__label {
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+    font-size: 0.95rem;
+    color: #bbb;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.contact__label.focus {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    padding: 0 0.4rem;
+    background: rgba(25, 25, 25, 0.8);
+    color: #d4a76a;
+    border-radius: 4px;
+}
+
+.contact__input {
+    width: 100%;
+    background: rgba(30, 30, 35, 0.4);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.contact__input:focus {
+    border-color: rgba(212, 167, 106, 0.5);
+    box-shadow: 0 0 10px rgba(212, 167, 106, 0.2);
+}
+
+textarea.contact__input {
+    resize: none;
+    height: 10rem;
+}
+
+.contact__button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.contact__button-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #4776E6, #8E54E9);
+    padding: 0.9rem 1.8rem;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(79, 118, 230, 0.4), 0 0 15px rgba(142, 84, 233, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact__button-submit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(79, 118, 230, 0.5), 0 0 20px rgba(142, 84, 233, 0.4);
+}
+
+.contact__button-submit:active {
+    transform: translateY(-2px);
+}
+
+.contact__button-submit ion-icon {
+    font-size: 1.2rem;
+}
+
+.contact__button-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Form messages */
+.contact__form-messages {
+    transition: opacity 0.5s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact__container {
+        grid-template-columns: 1fr;
+    }
+    .contact__card {
+        padding: 1rem;
+    }
+    .contact__form {
+        padding: 1.8rem;
+    }
+}
+
+/* Animation for form elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact__content {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.contact__content:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.contact__content:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.contact__content:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.contact__content:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.contact__button-container {
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}

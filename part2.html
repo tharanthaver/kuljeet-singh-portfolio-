@@ -1,0 +1,200 @@
+            <!-- RESEARCH PUBLICATIONS -->
+            <section class="research-publications section" id="research">
+                <h2 class="section-title">Research Journal Publications</h2>
+                
+                <div class="research-publications__stats">
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">31</div>
+                        <div class="research-publications__stat-label">Total Publications</div>
+                    </div>
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">23</div>
+                        <div class="research-publications__stat-label">SCI Publications</div>
+                    </div>
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">5</div>
+                        <div class="research-publications__stat-label">Scopus Publications</div>
+                    </div>
+                    <div class="research-publications__stat-card">
+                        <div class="research-publications__stat-number">3</div>
+                        <div class="research-publications__stat-label">UGC-Care Listed</div>
+                    </div>
+                </div>
+
+                <div class="research-publications__filters">
+                    <button class="research-publications__filter active" data-filter="all">All</button>
+                    <button class="research-publications__filter" data-filter="sci">SCI</button>
+                    <button class="research-publications__filter" data-filter="scopus">Scopus</button>
+                    <button class="research-publications__filter" data-filter="ugc">UGC-Care</button>
+                </div>
+
+                <div class="research-publications__grid">
+                    <!-- Publication cards will be dynamically added here -->
+                </div>
+
+                <button class="research-publications__load-more">Load More Publications</button>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__content">
+                    <h3 class="footer__title">Prof. Kuljeet Singh</h3>
+                    <p class="footer__description">
+                        Assistant Professor at Department of Computer Science,<br>
+                        CHRIST (Deemed to be University), Delhi-NCR, India
+                    </p>
+                </div>
+                
+                <div class="footer__content">
+                    <h3 class="footer__title">Explore</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Home</a></li>
+                        <li><a href="#about" class="footer__link">About</a></li>
+                        <li><a href="#skills" class="footer__link">Skills</a></li>
+                        <li><a href="#education" class="footer__link">Education</a></li>
+                        <li><a href="#exams" class="footer__link">Examinations</a></li>
+                        <li><a href="#research" class="footer__link">Research</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__content">
+                    <h3 class="footer__title">Follow Me</h3>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <ion-icon name="logo-google"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="footer__copy">© 2023 Prof. Kuljeet Singh. All rights reserved.</p>
+        </footer>
+
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/ScrollTrigger.min.js"></script>
+
+        <!-- MAIN -->
+        <script src="assets/js/main.js"></script>
+    
+        <!-- ICONS -->
+        <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+
+        <!-- Research Publications Script -->
+        <script>
+            const publications = [
+                {
+                    title: "GeneRiskCalc: A Web-Based Tool for Genetic Risk Association Analysis in Case-Control Studies",
+                    authors: "Amrit Sudershan, Kuljeet Singh",
+                    journal: "BMC Bioinformatics",
+                    issn: "1471-2105",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "2.9",
+                    quartile: "Q1",
+                    category: "sci"
+                },
+                {
+                    title: "A Hybrid Ensemble Framework with Particle Swarm Optimization for Network Anomaly Detection",
+                    authors: "Narinder Verma, Gourav Kumar, Kuljeet Singh*",
+                    journal: "Discover Applied Sciences",
+                    issn: "3004-9261",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    category: "scopus"
+                },
+                {
+                    title: "A novel univariate feature selection with ANOVA F-test based machine learning model for Intrusion Detection Framework of Robotics system",
+                    authors: "Narinder Verma, Neerendra Kumar, Kuljeet Singh",
+                    journal: "International Journal of Computational Intelligence Systems",
+                    issn: "1875-6883",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "2.5",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "Exploring the impact of social media on shaping collective value perceptions and motivations for electric vehicle adoption",
+                    authors: "Karan Dixit, Anurag Sinha, Kuljeet Singh* et al.",
+                    journal: "OPSEARCH",
+                    issn: "0975-0320",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "Scopus",
+                    impact: "1.4",
+                    quartile: "Q2",
+                    category: "scopus"
+                },
+                {
+                    title: "Breast Cancer Prediction Using Self Adaptive-Sea Lion Optimization based Recurrent Neural Network product",
+                    authors: "Santhosh Kumar G, Anurag Sinha, Kuljeet Singh* et al.",
+                    journal: "Evolving Systems",
+                    issn: "1868-6486",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Springer",
+                    type: "SCIE",
+                    impact: "2.7",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "Machine Learning in Neuroimaging and Computational Pathophysiology of Parkinson's Disease: A comprehensive review and meta-analysis",
+                    authors: "Khushi Sharma, Manjula Shanbhog, Kuljeet Singh*",
+                    journal: "Clinical Neurology and Neurosurgery",
+                    issn: "1872-6968",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Elsevier",
+                    type: "SCIE",
+                    impact: "1.8",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "RAG-Descriptor Enhanced Secure Cloth Recommendation System: A Hybrid Algorithm and Explainable AI-Driven Content-Based Image Retrieval (CBIR) Framework",
+                    authors: "Anurag Sinha, Kuljeet Singh et al.",
+                    journal: "Journal of Intelligent Systems",
+                    issn: "2191-026X",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "DE GRUYTER",
+                    type: "ESCI",
+                    impact: "2.1",
+                    quartile: "Q3",
+                    category: "sci"
+                },
+                {
+                    title: "Clinical Insights into Neuroimaging and AI-Driven Techniques in Alzheimer's disease: A Systematic Review and Meta-Analysis",
+                    authors: "Deepti Nayak, Manjula Shanbhog, Kuljeet Singh*",
+                    journal: "Journal of Clinical Neuroscience",
+                    issn: "1532-2653",
+                    year: "2025",
+                    status: "Communicated",
+                    publisher: "Elsevier",
+                    type: "SCIE",
+                    impact: "1.9",
+                    quartile: "Q2",
+                    category: "sci"
+                },
+                {
+                    title: "Neuroimaging and AI-Driven Approaches in Autism Spectrum Disorder: A Systematic Review of Emerging Diagnostics and Therapeutics",

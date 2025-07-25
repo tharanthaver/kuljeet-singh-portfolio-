@@ -1,0 +1,353 @@
+<section class="statsvis-section">
+  <div class="statsvis__container">
+    <h2 class="statsvis__title">Website Visitors</h2>
+
+    <div class="statsvis__content">
+      <!-- Left side - Statistics Card -->
+      <div class="statsvis__stat-card">
+        <div class="statsvis__stat-number" id="viewerCount">0</div>
+        <div class="statsvis__stat-label">Total Page Views</div>
+        <div class="statsvis__stat-animation">
+          <div class="statsvis__stat-particle"></div>
+          <div class="statsvis__stat-particle"></div>
+          <div class="statsvis__stat-particle"></div>
+          <div class="statsvis__stat-particle"></div>
+          <div class="statsvis__stat-particle"></div>
+        </div>
+      </div>
+
+      <!-- Right side - World Map -->
+      <div class="statsvis__map-container">
+        <h3 class="statsvis__map-title">Visitors Around the World</h3>
+        <div class="statsvis__map" id="worldMap">
+          <div class="map-placeholder">
+            <div class="map-dot" style="top: 30%; left: 25%;"></div>
+            <div class="map-dot" style="top: 45%; left: 45%;"></div>
+            <div class="map-dot" style="top: 60%; left: 70%;"></div>
+            <div class="map-dot" style="top: 25%; left: 80%;"></div>
+            <div class="map-dot" style="top: 70%; left: 35%;"></div>
+            <div class="map-text">Interactive World Map</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hover Sound -->
+<audio id="hoverSound" src="https://assets.mixkit.co/sfx/download/mixkit-game-ball-tap-2073.wav"></audio>
+
+<!-- CSS -->
+<style>
+  .statsvis-section {
+    position: relative;
+    padding: 7rem 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin: 4rem auto;
+    max-width: 1200px;
+    overflow: hidden;
+  }
+
+  .statsvis-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 50%, rgba(79, 70, 229, 0.1), transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .statsvis__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .statsvis__title {
+    font-size: 3.5rem;
+    text-align: center;
+    color: #d4a76a;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(212, 167, 106, 0.4);
+    font-family: 'Inknut Antiqua', serif;
+  }
+
+  .statsvis__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .statsvis__stat-card {
+    background: rgba(30, 30, 35, 0.6);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .statsvis__stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .statsvis__stat-number {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  .statsvis__stat-label {
+    color: #d4a76a;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .statsvis__stat-animation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, #4f46e5, #9333ea);
+    overflow: hidden;
+  }
+
+  .statsvis__stat-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: particleMove 3s infinite linear;
+  }
+
+  .statsvis__stat-particle:nth-child(1) { animation-delay: 0s; }
+  .statsvis__stat-particle:nth-child(2) { animation-delay: 0.6s; }
+  .statsvis__stat-particle:nth-child(3) { animation-delay: 1.2s; }
+  .statsvis__stat-particle:nth-child(4) { animation-delay: 1.8s; }
+  .statsvis__stat-particle:nth-child(5) { animation-delay: 2.4s; }
+
+  @keyframes particleMove {
+    0% { left: -10px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .statsvis__map-container {
+    background: rgba(30, 30, 35, 0.6);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .statsvis__map-container:hover {
+    transform: translateY(-5px);
+  }
+
+  .statsvis__map-title {
+    color: #d4a76a;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .statsvis__map {
+    height: 300px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .statsvis__stat-card:hover::after {
+    content: '🎉';
+    position: absolute;
+    font-size: 2rem;
+    top: 10px;
+    left: 10px;
+    animation: popConfetti 1s ease forwards;
+    opacity: 0;
+    z-index: 5;
+  }
+
+  @keyframes popConfetti {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.5); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+
+  .statsvis__stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, rgba(255,255,255,0.07), rgba(255,255,255,0.01));
+    transform: rotate(25deg);
+    animation: sweep 6s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes sweep {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(100%) rotate(25deg); }
+  }
+
+  .map-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Globe_icon.svg/1024px-Globe_icon.svg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: rotateGlobe 20s linear infinite;
+  }
+
+  @keyframes rotateGlobe {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .map-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(79, 70, 229, 0.6), 0 0 20px rgba(79, 70, 229, 0.3);
+    animation: mapDotPulse 3s infinite ease-in-out, dotHueShift 4s infinite;
+  }
+
+  @keyframes dotHueShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  @keyframes mapDotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.4); opacity: 1; }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .statsvis-section {
+      padding: 4rem 1rem;
+    }
+
+    .statsvis__content {
+      gap: 2rem;
+    }
+
+    .statsvis__title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .statsvis__stat-card, .statsvis__map-container {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .statsvis__map {
+      height: 250px;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .statsvis__title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .statsvis__stat-number {
+      font-size: 2rem;
+    }
+
+    .statsvis__map-title {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .map-dot {
+      width: 6px;
+      height: 6px;
+    }
+  }  
+</style>
+
+<!-- JS -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Animate count up
+    function animateCount(id, endValue, duration = 3000) {
+      const el = document.getElementById(id);
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = Math.floor(progress * endValue);
+        el.textContent = value.toLocaleString();
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    // Simulated count (replace with real API fetch if needed)
+    animateCount("viewerCount", 1247893);
+
+    // Hover sound effect
+    const hoverTargets = document.querySelectorAll('.statsvis__stat-card, .statsvis__map-container');
+    const sound = document.getElementById("hoverSound");
+
+    hoverTargets.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        sound.currentTime = 0;
+        sound.play();
+      });
+    });
+  });
+</script>
